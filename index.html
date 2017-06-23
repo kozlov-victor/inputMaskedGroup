@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InputMaskedGroupDemo</title>
+    <script src="jquery.js"></script>
+    <script src="inputMaskedGroup.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                credit card
+            </td>
+            <td>
+                <input type="text" class="group card">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                date
+            </td>
+            <td>
+                <input type="number" class="group date">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                month
+            </td>
+            <td>
+                <input type="number" class="group month">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                phone
+            </td>
+            <td>
+                <input type="tel" class="group tel">
+            </td>
+        </tr>
+    </table>
+
+
+    <script>
+        $('.card').inputMask('9999 9999 9999 9999');
+        $('.date').inputMask('AB',{
+            A: /[0123]/,
+            B: function(args){
+                if (args[0]==3) return /[01]/;
+                return /[0-9]/
+            }
+        });
+        $('.month').inputMask('AB',{
+            A: /[01]/,
+            B: function(args){ // args[0] correspond to first input character in mask
+                if (args[0]==0) return /[0-9]/;
+                return /[012]/
+            }
+        });
+        $('.tel').inputMask('(X99) 999-99-99',{
+            X: /[0]/
+        });
+        $('.group').inputGroup();
+    </script>
+
+    <button onclick="$('.group').inputUngroup();">ungroup</button>
+    <button onclick="$('input').inputUnmask();">unmask</button>
+</body>
+</html>
