@@ -41,6 +41,6 @@ jQuery mask and group input plugin with android support
 ```
 
 
+see demo [here](http://kozlov-victor.github.io/inputMaskedGroup/index.html) 
 
-
-see demo [here](http:site.com)
+[download](http://kozlov-victor.github.io/inputMaskedGroup/inputMaskedGroup.js)
